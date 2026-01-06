@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tentang', function (Blueprint $table) {
+        Schema::create('sertifikat', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->string('isi');
-            $table->string('foto');
             $table->string('judul_sertifikat');
             $table->string('deskripsi_sertifikat');
             $table->string('sertifikat');
@@ -29,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('tentang');
+        Schema::dropIfExists('sertifikat');
     }
 };
