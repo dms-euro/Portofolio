@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Kontak;
+use App\Models\Profil;
 use Illuminate\Http\Request;
 
 class KontakContreoller extends Controller
@@ -13,7 +14,9 @@ class KontakContreoller extends Controller
      */
     public function index()
     {
-        //
+        $profil = Profil::first();
+        $kontak = Kontak::first();
+        return view('admin.kontak', compact('kontak', 'profil'));
     }
 
     /**
@@ -68,7 +71,7 @@ class KontakContreoller extends Controller
         return redirect()->back()->with('success', 'Kontak berhasil diperbarui.');
     }
 
-    
+
     /**
      * Remove the specified resource from storage.
      */

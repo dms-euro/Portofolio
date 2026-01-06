@@ -9,26 +9,26 @@
     <!-- Container untuk posisi tengah -->
     <div class="flex flex-col h-[calc(100vh-16rem)] justify-center">
         <nav class="space-y-6">
-            <a href="#" class="flex items-center justify-center lg:justify-start text-white space-x-4 p-4 rounded-xl hover:bg-slate-800/50 transition-all group"
+            <a href="{{ route('admin.profil.index') }}" class="flex items-center justify-center lg:justify-start text-white space-x-4 p-4 rounded-xl hover:bg-slate-800/50 transition-all group"
                 data-aos="fade-right" data-aos-delay="100">
                 <div class="absolute right-0 top-1/2 -translate-y-1/2 w-1 h-8 bg-gradient-to-b from-cyan-400 to-blue-400 rounded-l-full"></div>
                 <i class="fas fa-home text-2xl group-hover:scale-110 transition-transform"></i>
                 <span class="font-medium text-lg">Beranda</span>
             </a>
 
-            <a href="tentang.html" class="flex items-center justify-center lg:justify-start text-white space-x-4 p-4 rounded-xl hover:bg-slate-800/50 transition-all group"
+            <a href="{{ route('admin.sertifikat.index') }}" class="flex items-center justify-center lg:justify-start text-white space-x-4 p-4 rounded-xl hover:bg-slate-800/50 transition-all group"
                 data-aos="fade-right" data-aos-delay="150">
                 <i class="fas fa-user text-2xl group-hover:scale-110 transition-transform"></i>
                 <span class="font-medium text-lg">Saya</span>
             </a>
 
-            <a href="#" class="flex items-center justify-center lg:justify-start text-white space-x-4 p-4 rounded-xl hover:bg-slate-800/50 transition-all group"
+            <a href="{{ route('admin.service.index') }}" class="flex items-center justify-center lg:justify-start text-white space-x-4 p-4 rounded-xl hover:bg-slate-800/50 transition-all group"
                 data-aos="fade-right" data-aos-delay="200">
                 <i class="fas fa-cog text-2xl group-hover:scale-110 transition-transform"></i>
                 <span class="font-medium text-lg">Service</span>
             </a>
 
-            <a href="#" class="flex items-center justify-center lg:justify-start text-white space-x-4 p-4 rounded-xl hover:bg-slate-800/50 transition-all group"
+            <a href="{{ route('admin.kontak.index') }}" class="flex items-center justify-center lg:justify-start text-white space-x-4 p-4 rounded-xl hover:bg-slate-800/50 transition-all group"
                 data-aos="fade-right" data-aos-delay="250">
                 <i class="fas fa-envelope text-2xl group-hover:scale-110 transition-transform"></i>
                 <span class="font-medium text-lg">Kontak</span>

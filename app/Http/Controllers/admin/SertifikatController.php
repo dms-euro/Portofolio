@@ -13,7 +13,8 @@ class SertifikatController extends Controller
      */
     public function index()
     {
-        return view('admin.tentang_saya');
+        $sertifikat = Sertifikat::all();
+        return view('admin.tentang_saya', compact('sertifikat'));
     }
 
     /**
@@ -29,7 +30,25 @@ class SertifikatController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'judul_sertifikat' => 'required|string|max:255',
+            'deskripsi_sertifikat' => 'required|string',
+            'sertifikat' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'tanggal_sertifikat' => 'required|date',
+        ]);
+
+        $data = $request->only([
+            'judul_sertifikat',
+            'deskripsi_sertifikat',
+            'tanggal_sertifikat'
+        ]);
+
+        if ($request->hasFile('sertifikat')){
+            $data['sertifikat'] = $request->file('sertifikat')->store('sertifikast', 'public');
+        }
+
+        Sertifikat::create($data);
+        return redirect()->back()->with('success', 'Sertifikat berhasil ditambahkan.');
     }
 
     /**

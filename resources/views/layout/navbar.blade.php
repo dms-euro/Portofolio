@@ -9,24 +9,24 @@
                 z-50">
     <div class="flex justify-between items-center">
         <!-- HOME -->
-        <a href="#" class="relative group flex flex-col items-center">
+        <a href="{{ route('admin.profil.index') }}" class="relative group flex flex-col items-center">
             <i class="fas fa-home text-2xl text-gray-300"></i>
                 <!-- Garis indikator aktif -->
             <div class="absolute -bottom-2.5 w-6 h-1 bg-gradient-to-r from-cyan-400 to-blue-400 rounded-full animate-pulse"></div>
         </a>
 
         <!-- SEARCH -->
-        <a href="#" class="relative group flex flex-col items-center">
+        <a href="{{ route('admin.sertifikat.index') }}" class="relative group flex flex-col items-center">
             <i class="fas fa-search text-2xl text-gray-300"></i>
         </a>
 
         <!-- SERVICE -->
-        <a href="#" class="relative group flex flex-col items-center">
+        <a href="{{ route('admin.service.index') }}" class="relative group flex flex-col items-center">
             <i class="fas fa-cog text-2xl text-gray-300"></i>
         </a>
 
         <!-- KONTAK -->
-        <a href="#" class="relative group flex flex-col items-center">
+        <a href="{{ route('admin.kontak.index') }}" class="relative group flex flex-col items-center">
             <i class="fas fa-envelope text-2xl text-gray-300"></i>
         </a>
     </div>
