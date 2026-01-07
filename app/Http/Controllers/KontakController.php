@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactMail;
 use App\Models\Kontak;
+use App\Models\Profil;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class KontakController extends Controller
 {
@@ -12,7 +15,9 @@ class KontakController extends Controller
      */
     public function index()
     {
-        //
+        $profil = Profil::first();
+        // $kontak = Kontak::first();
+        return view('public.kontak', compact('profil'));
     }
 
     /**
@@ -28,8 +33,17 @@ class KontakController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'nama' => 'required',
+            'email' => 'required|email',
+            'pesan' => 'required',
+        ]);
+
+        Mail::to('uroprasetyo@gmail.com')->send(new ContactMail($data));
+
+        return back()->with('success', 'Pesan berhasil dikirim');
     }
+
 
     /**
      * Display the specified resource.

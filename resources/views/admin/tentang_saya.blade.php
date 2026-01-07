@@ -151,8 +151,8 @@
 
             <div
                 class="relative overflow-hidden rounded-3xl p-10
-    bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-2xl
-    border border-white/20">
+            bg-gradient-to-br from-white/10 to-white/5 backdrop-blur-2xl
+            border border-white/20">
 
                 <!-- ================= ROW 1 ================= -->
                 <div class="overflow-hidden group mb-12">
@@ -229,7 +229,7 @@
                     bg-gradient-to-br from-white/12 to-white/6 backdrop-blur-2xl
                     border border-white/25 shadow-xl">
                 <!-- ADD -->
-                <div class="text-center mt-2">
+                <div class="text-center">
                     <!-- Modal toggle -->
                     <button data-modal-target="sertifikatModal" data-modal-toggle="sertifikatModal"
                         class="text-white bg-blue-400/40 box-border rounded-full border border-transparent hover:bg-blue-700 focus:ring-4 focus:ring-blue-500 shadow-xs font-medium leading-5 rounded-base text-sm px-4 py-2.5 focus:outline-none"
@@ -237,36 +237,60 @@
                         Tambah Sertifikat <i class="fas fa-plus ml-2"></i>
                     </button>
                 </div>
-                <div class="grid md:grid-cols-3 gap-8">
+                <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     @foreach ($sertifikat as $s)
-                        <div class="relative group cursor-pointer" data-modal-target="certModal"
+                        <div class="relative group cursor-pointer h-full" data-modal-target="certModal"
                             data-modal-toggle="certModal">
+
                             <!-- Glow Effect -->
                             <div
-                                class="absolute -inset-2 bg-gradient-to-r from-blue-500/30 to-cyan-500/30 rounded-3xl blur-xl
-                          opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                class="pointer-events-none absolute -inset-3
+                                    bg-gradient-to-r from-blue-500/30 to-cyan-500/30
+                                    rounded-3xl blur-2xl
+                                    opacity-0 group-hover:opacity-100
+                                    transition-opacity duration-500">
                             </div>
 
+                            <!-- Card -->
                             <div
-                                class="relative rounded-2xl overflow-hidden border-2 border-white/20
-                          group-hover:border-white/50 transition-all duration-500
-                          group-hover:shadow-[0_0_60px_rgba(59,130,246,0.4)]">
-                                <img src="{{ asset('storage/' . $s->sertifikat) }}"
-                                    class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700" />
+                                class="relative h-full rounded-2xl overflow-hidden
+                                    border border-white/20
+                                    bg-slate-900
+                                    group-hover:border-white/50
+                                    transition-all duration-500
+                                    group-hover:shadow-[0_0_50px_rgba(59,130,246,0.4)]">
+
+                                <!-- Image -->
+                                <img src="{{ asset('storage/' . $s->sertifikat) }}" alt="{{ $s->judul_sertifikat }}"
+                                    class="w-full h-64 object-cover
+                            group-hover:scale-110
+                            transition-transform duration-700" />
 
                                 <!-- Overlay -->
                                 <div
-                                    class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent
-                            opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                                    class="absolute inset-0
+                                        bg-gradient-to-t from-black/90 via-black/30 to-transparent
+                                        opacity-0 group-hover:opacity-100
+                                        transition-opacity duration-500">
+
                                     <div class="absolute bottom-0 p-6 w-full">
-                                        <div class="text-lg font-semibold mb-2">{{ $s->judul_sertifikat }}</div>
-                                        <div class="text-sm text-gray-300">{{ $s->deskripsi_sertifikat }}</div>
-                                        <div class="text-xs text-gray-400 mt-4">
-                                            <i class="fas fa-calendar mr-2"></i>{{ $s->tanggal_sertifikat }}
+                                        <h3 class="text-lg font-semibold text-white mb-1">
+                                            {{ $s->judul_sertifikat }}
+                                        </h3>
+
+                                        <p class="text-sm text-gray-300 line-clamp-2">
+                                            {{ $s->deskripsi_sertifikat }}
+                                        </p>
+
+                                        <div class="text-xs text-gray-400 mt-3 flex items-center gap-2">
+                                            <i class="fas fa-calendar"></i>
+                                            {{ $s->tanggal_sertifikat }}
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
+                        </div>
                     @endforeach
                 </div>
             </div>
@@ -412,7 +436,6 @@
             </div>
         </div>
     </div>
-
 @endsection
 @push('modals')
     <!-- Main modal -->
@@ -445,7 +468,7 @@
                         </label>
                         <input type="text" name="judul_sertifikat"
                             class="w-full px-3 py-2 rounded-lg bg-slate-800 border border-gray-700
-                               text-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                                text-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
                             placeholder="Contoh: Sertifikat Web Developer" required>
                     </div>
 
@@ -456,7 +479,7 @@
                         </label>
                         <textarea name="deskripsi_sertifikat" rows="3"
                             class="w-full px-3 py-2 rounded-lg bg-slate-800 border border-gray-700
-                               text-white focus:ring-2 focus:ring-blue-500 focus:outline-none resize-none"
+                                text-white focus:ring-2 focus:ring-blue-500 focus:outline-none resize-none"
                             placeholder="Deskripsi singkat sertifikat"></textarea>
                     </div>
 
@@ -467,9 +490,9 @@
                         </label>
                         <input type="file" name="sertifikat"
                             class="w-full text-sm text-gray-300
-                               file:bg-blue-600/30 file:border-0 file:text-white
-                               file:px-4 file:py-2 file:rounded-lg
-                               hover:file:bg-blue-600/50"
+                                file:bg-blue-600/30 file:border-0 file:text-white
+                                file:px-4 file:py-2 file:rounded-lg
+                                hover:file:bg-blue-600/50"
                             accept="image/*,.pdf" required>
                     </div>
 
@@ -480,7 +503,7 @@
                         </label>
                         <input type="date" name="tanggal_sertifikat"
                             class="w-full px-3 py-2 rounded-lg bg-slate-800 border border-gray-700
-                               text-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                                text-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
                             required>
                     </div>
 
@@ -504,7 +527,6 @@
     </div>
 @endpush
 @push('scripts')
-
     <script>
         tailwind.config = {
             theme: {

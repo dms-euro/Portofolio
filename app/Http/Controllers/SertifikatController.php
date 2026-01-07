@@ -12,7 +12,8 @@ class SertifikatController extends Controller
      */
     public function index()
     {
-        //
+        $sertifikat = Sertifikat::all();
+        return view('public.tentang_saya', compact('sertifikat'));
     }
 
     /**

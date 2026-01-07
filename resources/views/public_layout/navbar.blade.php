@@ -9,14 +9,14 @@
                 z-50">
     <div class="flex justify-between items-center">
         <!-- HOME -->
-        <a href="{{ route('admin.profil.index') }}"
+        <a href="{{ route('profil.index') }}"
             class="relative group flex flex-col items-center
-            {{ request()->routeIs('admin.profil.*') ? 'text-white' : 'text-gray-400' }}">
+            {{ request()->routeIs('profil.*') ? 'text-white' : 'text-gray-400' }}">
             <i
                 class="fas fa-home text-2xl
-        {{ request()->routeIs('admin.profil.*') ? 'text-white' : 'text-gray-300' }}"></i>
+        {{ request()->routeIs('profil.*') ? 'text-white' : 'text-gray-300' }}"></i>
 
-            @if (request()->routeIs('admin.profil.*'))
+            @if (request()->routeIs('profil.*'))
                 <!-- Garis indikator aktif -->
                 <div
                     class="absolute -bottom-2.5 w-6 h-1
@@ -27,14 +27,14 @@
         </a>
 
         <!-- SEARCH / SERTIFIKAT -->
-        <a href="{{ route('admin.sertifikat.index') }}"
+        <a href="{{ route('sertifikat.index') }}"
             class="relative group flex flex-col items-center
-            {{ request()->routeIs('admin.sertifikat.*') ? 'text-white' : 'text-gray-400' }}">
+            {{ request()->routeIs('sertifikat.*') ? 'text-white' : 'text-gray-400' }}">
             <i
                 class="fas fa-search text-2xl
-        {{ request()->routeIs('admin.sertifikat.*') ? 'text-white' : 'text-gray-300' }}"></i>
+        {{ request()->routeIs('sertifikat.*') ? 'text-white' : 'text-gray-300' }}"></i>
 
-            @if (request()->routeIs('admin.sertifikat.*'))
+            @if (request()->routeIs('sertifikat.*'))
                 <div
                     class="absolute -bottom-2.5 w-6 h-1
                     bg-gradient-to-r from-cyan-400 to-blue-400
@@ -44,14 +44,14 @@
         </a>
 
         <!-- SERVICE -->
-        <a href="{{ route('admin.service.index') }}"
+        <a href="{{ route('service.index') }}"
             class="relative group flex flex-col items-center
-            {{ request()->routeIs('admin.service.*') ? 'text-white' : 'text-gray-400' }}">
+            {{ request()->routeIs('service.*') ? 'text-white' : 'text-gray-400' }}">
             <i
                 class="fas fa-cog text-2xl
-        {{ request()->routeIs('admin.service.*') ? 'text-white' : 'text-gray-300' }}"></i>
+        {{ request()->routeIs('service.*') ? 'text-white' : 'text-gray-300' }}"></i>
 
-            @if (request()->routeIs('admin.service.*'))
+            @if (request()->routeIs('service.*'))
                 <div
                     class="absolute -bottom-2.5 w-6 h-1
                     bg-gradient-to-r from-cyan-400 to-blue-400
@@ -61,14 +61,14 @@
         </a>
 
         <!-- KONTAK -->
-        <a href="{{ route('admin.kontak.index') }}"
+        <a href="{{ route('kontak.index') }}"
             class="relative group flex flex-col items-center
-            {{ request()->routeIs('admin.kontak.*') ? 'text-white' : 'text-gray-400' }}">
+            {{ request()->routeIs('kontak.*') ? 'text-white' : 'text-gray-400' }}">
             <i
                 class="fas fa-envelope text-2xl
-        {{ request()->routeIs('admin.kontak.*') ? 'text-white' : 'text-gray-300' }}"></i>
+        {{ request()->routeIs('kontak.*') ? 'text-white' : 'text-gray-300' }}"></i>
 
-            @if (request()->routeIs('admin.kontak.*'))
+            @if (request()->routeIs('kontak.*'))
                 <div
                     class="absolute -bottom-2.5 w-6 h-1
                     bg-gradient-to-r from-cyan-400 to-blue-400

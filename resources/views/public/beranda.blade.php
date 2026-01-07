@@ -1,4 +1,4 @@
-@extends('layout.main')
+@extends('public_layout.main')
 @section('desktop-content')
     <div class="desktop-main-container w-full max-w-4xl mx-auto">
         <!-- Profile Header -->
@@ -60,10 +60,10 @@
 
                     <!-- BUTTONS (GLASS EFFECT) -->
                     <div class="flex space-x-2 m-4">
-                        <button
+                        <a href="{{ route('kontak.index') }}"
                             class="w-40 h-9 flex items-center justify-center bg-white/5 backdrop-blur-md border border-white/20 text-white hover:bg-white/20 rounded-xl text-sm font-medium transition duration-300">
                             Hire Me
-                        </button>
+                        </a>
 
                         <button
                             class="w-40 h-9 flex items-center justify-center bg-white/5 backdrop-blur-md border border-white/20 text-white hover:bg-white/20 rounded-xl text-sm font-mediumtransition duration-300">

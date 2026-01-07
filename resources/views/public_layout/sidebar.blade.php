@@ -9,13 +9,13 @@
     <!-- Container untuk posisi tengah -->
     <div class="flex flex-col h-[calc(100vh-16rem)] justify-center">
         <nav class="space-y-6">
-            <a href="{{ route('admin.profil.index') }}"
+            <a href="{{ route('profil.index') }}"
                 class="relative flex items-center justify-center lg:justify-start space-x-4 p-4 rounded-xl transition-all group
-                    {{ request()->routeIs('admin.profil.*') ? 'bg-slate-800/60 text-white' : 'text-white hover:bg-slate-800/50' }}"
+                    {{ request()->routeIs('profil.*') ? 'bg-slate-800/60 text-white' : 'text-white hover:bg-slate-800/50' }}"
                 data-aos="fade-right" data-aos-delay="100">
 
                 {{-- indikator aktif --}}
-                @if (request()->routeIs('admin.profil.*'))
+                @if (request()->routeIs('profil.*'))
                     <div
                         class="absolute right-0 top-1/2 -translate-y-1/2 w-1 h-8
                     bg-gradient-to-b from-cyan-400 to-blue-400 rounded-l-full">
@@ -26,12 +26,12 @@
                 <span class="font-medium text-lg">Beranda</span>
             </a>
 
-            <a href="{{ route('admin.sertifikat.index') }}"
+            <a href="{{ route('sertifikat.index') }}"
                 class="relative flex items-center justify-center lg:justify-start space-x-4 p-4 rounded-xl transition-all group
-                    {{ request()->routeIs('admin.sertifikat.*') ? 'bg-slate-800/60 text-white' : 'text-white hover:bg-slate-800/50' }}"
+                    {{ request()->routeIs('sertifikat.*') ? 'bg-slate-800/60 text-white' : 'text-white hover:bg-slate-800/50' }}"
                 data-aos="fade-right" data-aos-delay="150">
 
-                @if (request()->routeIs('admin.sertifikat.*'))
+                @if (request()->routeIs('sertifikat.*'))
                     <div
                         class="absolute right-0 top-1/2 -translate-y-1/2 w-1 h-8
                     bg-gradient-to-b from-cyan-400 to-blue-400 rounded-l-full">
@@ -42,13 +42,13 @@
                 <span class="font-medium text-lg">Saya</span>
             </a>
 
-            <a href="{{ route('admin.service.index') }}"
+            <a href="{{ route('service.index') }}"
                 class="relative flex items-center justify-center lg:justify-start space-x-4 p-4 rounded-xl transition-all group
-                    {{ request()->routeIs('admin.service.*') ? 'bg-slate-800/60 text-white' : 'text-white hover:bg-slate-800/50' }}"
+                    {{ request()->routeIs('service.*') ? 'bg-slate-800/60 text-white' : 'text-white hover:bg-slate-800/50' }}"
                 data-aos="fade-right" data-aos-delay="200">
 
                 {{-- indikator aktif --}}
-                @if (request()->routeIs('admin.service.*'))
+                @if (request()->routeIs('service.*'))
                     <div
                         class="absolute right-0 top-1/2 -translate-y-1/2 w-1 h-8
                     bg-gradient-to-b from-cyan-400 to-blue-400 rounded-l-full">
@@ -59,13 +59,13 @@
                 <span class="font-medium text-lg">Service</span>
             </a>
 
-            <a href="{{ route('admin.kontak.index') }}"
+            <a href="{{ route('kontak.index') }}"
                 class="relative flex items-center justify-center lg:justify-start space-x-4 p-4 rounded-xl transition-all group
-                    {{ request()->routeIs('admin.kontak.*') ? 'bg-slate-800/60 text-white' : 'text-white hover:bg-slate-800/50' }}"
+                    {{ request()->routeIs('kontak.*') ? 'bg-slate-800/60 text-white' : 'text-white hover:bg-slate-800/50' }}"
                 data-aos="fade-right" data-aos-delay="250">
 
                 {{-- indikator aktif --}}
-                @if (request()->routeIs('admin.kontak.*'))
+                @if (request()->routeIs('kontak.*'))
                     <div
                         class="absolute right-0 top-1/2 -translate-y-1/2 w-1 h-8
                     bg-gradient-to-b from-cyan-400 to-blue-400 rounded-l-full">
