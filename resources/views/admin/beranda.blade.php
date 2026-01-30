@@ -129,16 +129,35 @@
                     <span class="text-xs text-gray-700 dark:text-gray-300">Baru</span>
                 </button>
                 @foreach ($cerita as $c)
-                    <div class="flex flex-col items-center flex-shrink-0 cursor-pointer"
-                        onclick="openStory('{{ asset('storage/' . $c->gambar) }}')">
-                        <div
-                            class="w-16 h-16 rounded-full p-[2px] mb-2
-                            bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-500">
-                            <img src="{{ asset('storage/' . $c->gambar) }}" alt="Foto Profil"
-                                class="w-full h-full object-cover rounded-full">
+                    <div class="relative flex flex-col items-center flex-shrink-0 cursor-pointer group">
+                        <!-- Container untuk story -->
+                        <div onclick="openStory('{{ asset('storage/' . $c->gambar) }}', '{{ $c->judul }}')">
+                            <div
+                                class="relative w-16 h-16 rounded-full p-[2px] mb-2 bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-500">
+                                <img src="{{ asset('storage/' . $c->gambar) }}" alt="Foto Profil"
+                                    class="w-full h-full object-cover rounded-full">
 
+                                <button type="button" onclick="event.stopPropagation(); deleteStory({{ $c->id }})"
+                                    class="absolute -bottom-1 -right-1 w-6 h-6
+                                            bg-red-500 hover:bg-red-600
+                                            text-white rounded-full flex items-center justify-center text-xs
+                                            shadow-lg border-2 border-white dark:border-slate-800
+                                            opacity-0 group-hover:opacity-100
+                                            transition-all duration-200
+                                            transform hover:scale-110 z-10"
+                                    title="Hapus Story">
+                                    <i class="fas fa-times text-xs"></i>
+                                </button>
+
+                                <!-- Indicator untuk story baru (opsional) -->
+                                @if ($c->created_at->diffInHours(now()) < 24)
+                                    <span
+                                        class="absolute -top-0 -right-1 w-4 h-4 bg-green-500 rounded-full
+                            border-2 border-white dark:border-slate-800"></span>
+                                @endif
+                            </div>
+                            <span class="text-xs text-gray-700 dark:text-gray-300">{{ $c->judul }}</span>
                         </div>
-                        <span class="text-xs text-gray-700 dark:text-gray-300">{{ $c->judul }}</span>
                     </div>
                 @endforeach
             </div>
@@ -213,6 +232,22 @@
                                     border border-white/30 hover:bg-white/30 transition">
                                 <i class="fa-solid fa-arrow-up-right-from-square"></i> Live
                             </a>
+                            <form action="{{ route('admin.portofolio.destroy', $p->id) }}" method="POST"
+                                class="w-24 md:w-28">
+                                @csrf
+                                @method('DELETE')
+
+                                <button type="submit"
+                                    class="w-full h-8 md:h-9 flex items-center justify-center gap-2
+                                        rounded-lg text-xs md:text-sm font-medium text-white
+                                        bg-red-500/80 backdrop-blur-md
+                                        border border-red-400/40
+                                        hover:bg-red-600 transition"
+                                    title="Hapus Portofolio">
+                                    <i class="fa-solid fa-trash"></i> Hapus
+                                </button>
+                            </form>
+
                         </div>
                     </div>
                 </div>
@@ -323,7 +358,7 @@
                                     class="w-full pl-10 pr-4 py-3 rounded-xl bg-gray-900/50 border border-gray-700
                                             text-white placeholder-gray-500 focus:outline-none focus:ring-2
                                             focus:ring-green-500 focus:border-transparent transition-all"
-                                        placeholder="https://github.com/username/project-name" pattern="https?://.+">
+                                    placeholder="https://github.com/username/project-name" pattern="https?://.+">
                             </div>
                             <p class="text-xs text-gray-500">
                                 Tautan ke repository GitHub (opsional)
@@ -343,7 +378,7 @@
                                     class="w-full pl-10 pr-4 py-3 rounded-xl bg-gray-900/50 border border-gray-700
                                             text-white placeholder-gray-500 focus:outline-none focus:ring-2
                                             focus:ring-purple-500 focus:border-transparent transition-all"
-                                        placeholder="https://demo-project.com" pattern="https?://.+">
+                                    placeholder="https://demo-project.com" pattern="https?://.+">
                             </div>
                             <p class="text-xs text-gray-500">
                                 Tautan ke demo live atau deployed project (opsional)
@@ -790,12 +825,12 @@
                     font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                                     Upload
                                 </button>
-
                                 <button data-modal-hide="storyModal" type="button"
                                     class="ml-3 text-gray-700 bg-gray-200 hover:bg-gray-300
                     rounded-lg text-sm px-5 py-2.5 dark:bg-slate-700 dark:text-white">
                                     Batal
                                 </button>
+                                <!-- Button Hapus di footer modal -->
                             </div>
                     </form>
                 </div>
@@ -803,6 +838,40 @@
             </div>
         </div>
     </div>
+@endpush
+@push('scripts')
+    <script>
+        function deleteStory(id) {
+            // Konfirmasi native browser
+            const confirmed = confirm('Yakin ingin menghapus story ini?');
+            if (!confirmed) return;
+
+            fetch(`/cerita/admin/${id}/delete`, {
+                    method: 'DELETE',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                        'Accept': 'application/json'
+                    }
+                })
+                .then(res => {
+                    if (!res.ok) throw new Error('Gagal menghapus');
+                    return res.json();
+                })
+                .then(() => {
+                    // HAPUS CARD DARI DOM (tanpa reload)
+                    const card = document.getElementById(`story-${id}`);
+                    if (card) {
+                        card.remove();
+                    } else {
+                        location.reload(); // fallback
+                    }
+                })
+                .catch(err => {
+                    console.error(err);
+                    alert('Gagal menghapus story');
+                });
+        }
+    </script>
 @endpush
 @push('scripts')
     <script>

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Profil;
 use App\Models\Sertifikat;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class SertifikatController extends Controller
 {
@@ -13,8 +15,9 @@ class SertifikatController extends Controller
      */
     public function index()
     {
+        $profil = Profil::first();
         $sertifikat = Sertifikat::all();
-        return view('admin.tentang_saya', compact('sertifikat'));
+        return view('admin.tentang_saya', compact('profil', 'sertifikat'));
     }
 
     /**
@@ -80,6 +83,10 @@ class SertifikatController extends Controller
      */
     public function destroy(Sertifikat $sertifikat)
     {
-        //
+        if ($sertifikat->sertifikat) {
+            Storage::disk('public')->delete($sertifikat->sertifikat);
+        }
+        $sertifikat->delete();
+        return redirect()->back()->with('success', 'Sertifikat berhasil dihapus.');
     }
 }

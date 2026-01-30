@@ -26,9 +26,11 @@ Route::delete('cerita/admin/{cerita}/delete', [CeritaControllerAdmin::class, 'de
 Route::post('portofolio/admin/post', [PortofolioControllerAdmin::class, 'store'])->name('admin.portofolio.store');
 Route::delete('portofolio/admin/{portofolio}/delete', [PortofolioControllerAdmin::class, 'destroy'])->name('admin.portofolio.destroy');
 Route::get('/sertifikat/admin', [SertifikatControllerAdmin::class, 'index'])->name('admin.sertifikat.index');
+Route::delete('/sertifikat/admin/{sertifikat}/delete', [SertifikatControllerAdmin::class, 'destroy'])->name('admin.sertifikat.destroy');
 Route::post('/sertifikat/admin/post', [SertifikatControllerAdmin::class, 'store'])->name('admin.sertifikat.store');
 Route::get('/service/admin', [ServiceControllerAdmin::class, 'index'])->name('admin.service.index');
 Route::get('/kontak/admin', [KontakContreollerAdmin::class, 'index'])->name('admin.kontak.index');
+Route::post('/kontak/admin/update', [KontakContreollerAdmin::class, 'update'])->name('admin.kontak.update');
 
 // email
 Route::post('/kirim-pesan', [KontakController::class, 'store'])->name('kirim.pesan');

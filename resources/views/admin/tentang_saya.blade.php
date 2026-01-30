@@ -30,7 +30,7 @@
 
                     <!-- Inner Photo Container -->
                     <div class="absolute inset-4 rounded-[2rem] overflow-hidden">
-                        <img src="https://i.pravatar.cc/600?img=15"
+                        <img src="{{ asset('storage/' . $profil->foto) }}""
                             class="w-full h-full object-cover scale-110 group-hover:scale-125 transition-transform duration-700" />
                     </div>
 
@@ -269,11 +269,12 @@
                                 <!-- Overlay -->
                                 <div
                                     class="absolute inset-0
-                                        bg-gradient-to-t from-black/90 via-black/30 to-transparent
-                                        opacity-0 group-hover:opacity-100
-                                        transition-opacity duration-500">
+        bg-gradient-to-t from-black/90 via-black/30 to-transparent
+        opacity-0 group-hover:opacity-100
+        transition-opacity duration-500">
 
                                     <div class="absolute bottom-0 p-6 w-full">
+
                                         <h3 class="text-lg font-semibold text-white mb-1">
                                             {{ $s->judul_sertifikat }}
                                         </h3>
@@ -286,6 +287,25 @@
                                             <i class="fas fa-calendar"></i>
                                             {{ $s->tanggal_sertifikat }}
                                         </div>
+
+                                        <!-- Tombol Aksi -->
+                                        <div class="mt-4 flex justify-end gap-3">
+
+                                            {{-- Hapus (tampil seperti <a>) --}}
+                                            <form action="{{ route('admin.sertifikat.destroy', $s->id) }}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+
+                                                <button type="submit"
+                                                    class="text-sm font-medium text-red-400 hover:text-red-300
+                        underline underline-offset-4 transition"
+                                                    title="Hapus Sertifikat">
+                                                    <i class="fa-solid fa-trash mr-1"></i> Hapus
+                                                </button>
+                                            </form>
+
+                                        </div>
+
                                     </div>
                                 </div>
 

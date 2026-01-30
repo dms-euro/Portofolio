@@ -141,7 +141,7 @@
                         hover:scale-105 transition-all duration-300 group/badge">
                             <i
                                 class="fa-solid fa-mug-hot text-amber-400 text-lg group-hover/badge:rotate-12 transition-transform"></i>
-                            <span>Like Americano</span>
+                            <span>Like Coffe</span>
                         </span>
 
                         <!-- Badge 4: Study -->
@@ -187,7 +187,6 @@
                             <i class="fa-brands fa-js text-yellow-400"></i>
                             <i class="fa-brands fa-php text-indigo-400"></i>
                             <i class="fa-solid fa-database text-sky-400"></i>
-                            <i class="fa-solid fa-hashtag text-purple-400"></i> <!-- C# -->
                         </div>
 
                         <!-- SET B -->
@@ -197,7 +196,6 @@
                             <i class="fa-brands fa-js text-yellow-400"></i>
                             <i class="fa-brands fa-php text-indigo-400"></i>
                             <i class="fa-solid fa-database text-sky-400"></i>
-                            <i class="fa-solid fa-hashtag text-purple-400"></i>
                         </div>
 
                     </div>
@@ -431,7 +429,7 @@
                         hover:scale-105 transition-all duration-300 group/badge">
                                 <i
                                     class="fa-solid fa-mug-hot text-amber-400 text-lg group-hover/badge:rotate-12 transition-transform"></i>
-                                <span>Like Americano</span>
+                                <span>Like Coffe</span>
                             </span>
 
                             <!-- Badge 4: Study -->
